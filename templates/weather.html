@@ -5,18 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="{{ url_for('static', filename='styles/style.css')}}" rel="stylesheet" />
 </head>
 
 <body>
-    <h1>{{ title }} Weather</h1>
-    <p>{{ status }} and {{ temp }} &deg;</p>
-    <p>Feels Like {{ feels_like }} &deg;</p>
 
     <form action="/weather">
         <input type="text" name="city" id="city" placeholder="Enter a City" />
         <button type="submit">Submit</button>
     </form>
+
+    <div class="Weather-Info">
+        <h1>{{ title }} Weather</h1>
+        <p>{{ status }} and {{ temp }} &deg;C</p>
+        <p>Feels Like {{ feels_like }} &deg;C</p>
+        <p>High: {{ high }} &deg;C</p>
+        <p>Low: {{ low }} &deg;C</p>
+        <p>Humidity: {{ humidity }}% </p>
+        <p>Wind: {{ windspeed }} km/h </p>
+        <p>Gusts: {{ windgust }} km/h </p>
+    </div>
 </body>
 
 </html>

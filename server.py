@@ -25,12 +25,20 @@ def get_weather():
     if not weather_data['cod'] == 200:
         return render_template('city-not-found.html')
     
+    # Extract wind gust if it exists
+    windgust = weather_data['wind'].get('gust', 'N/A')
+    
     return render_template(
         "weather.html",
         title=weather_data["name"],
         status=weather_data["weather"][0]["description"].capitalize(),
         temp=f"{weather_data['main']['temp']:.1f}",
-        feels_like=f"{weather_data['main']['feels_like']:.1f}"
+        feels_like=f"{weather_data['main']['feels_like']:.1f}",
+        high=f"{weather_data['main']['temp_max']:.1f}",
+        low=f"{weather_data['main']['temp_min']:.1f}",
+        humidity=f"{weather_data['main']['humidity']}",
+        windspeed=f"{weather_data['wind']['speed']}",  
+        windgust=windgust,  
     )
 
 if __name__ == "__main__":
